@@ -2,7 +2,6 @@ package io.github.arch2be.empex.framework
 
 import io.github.arch2be.empex.application.ports.out.GithubUserAuditLogRepository
 import io.github.arch2be.empex.domain.GithubUserAuditLog
-import io.github.arch2be.empex.fixtures.GithubUserResponseFixtures
 import org.spockframework.spring.SpringBean
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity

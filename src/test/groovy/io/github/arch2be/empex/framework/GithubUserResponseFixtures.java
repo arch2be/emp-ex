@@ -1,7 +1,6 @@
-package io.github.arch2be.empex.fixtures;
+package io.github.arch2be.empex.framework;
 
 import io.github.arch2be.empex.application.dto.GithubUserDto;
-import io.github.arch2be.empex.framework.GithubUserInfoResponse;
 
 import java.time.LocalDateTime;
 
