@@ -17,7 +17,14 @@ public class GetGithubUserInfoService implements GetGithubUserInfoUseCase {
     @Override
     public Optional<GithubUserDto> findGithubUserByLogin(String login) {
         return loadGithubUser.loadByLogin(login)
-                .map(user -> new GithubUserDto(user.getId(), user.getLogin(), user.getName(),
-                        user.getType(), user.getAvatarUrl(), user.getCreatedAt(), user.getCalculations()));
+                .map(user -> GithubUserDto.builder()
+                        .id(user.getId())
+                        .name(user.getName())
+                        .login(user.getLogin())
+                        .avatarUrl(user.getAvatarUrl())
+                        .createdAt(user.getCreatedAt())
+                        .type(user.getType())
+                        .calculations(user.getCalculations())
+                        .build());
     }
 }

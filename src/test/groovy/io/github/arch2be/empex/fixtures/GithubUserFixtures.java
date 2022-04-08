@@ -20,12 +20,13 @@ public class GithubUserFixtures {
             8,
             6);
 
-    public static final GithubUserDto CORRECT_RESPONSE_ARCH2BE = new GithubUserDto(
-            28571918,
-            ARCH2BE_LOGIN,
-            "Mateusz",
-            "User",
-            "https://avatars.githubusercontent.com/u/28571918?v=4",
-            LocalDateTime.of(2017,5,9,16,57,21),
-            6.0);
+    public static final GithubUserDto CORRECT_RESPONSE_ARCH2BE = GithubUserDto.builder()
+            .id(28571918)
+            .login(ARCH2BE_LOGIN)
+            .name("Mateusz")
+            .type("User")
+            .avatarUrl("https://avatars.githubusercontent.com/u/28571918?v=4")
+            .createdAt(LocalDateTime.of(2017,5,9,16,57,21))
+            .calculations(6.0)
+            .build();
 }

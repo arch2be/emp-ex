@@ -5,27 +5,33 @@ import io.github.arch2be.empex.domain.GithubUser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClientResponseException;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
 import java.util.Objects;
 import java.util.Optional;
 
 @Service
 class LoadGithubUserImpl implements LoadGithubUser {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate;
     @Value("${users.api.url}")
     private String githubURL;
+
+    LoadGithubUserImpl(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
 
     @Override
     public Optional<GithubUser> loadByLogin(String login) {
         try {
             ResponseEntity<GithubUserInfoResponse> response =
-                    restTemplate.getForEntity(githubURL + login, GithubUserInfoResponse.class);
+                    restTemplate.getForEntity(URI.create(githubURL + login), GithubUserInfoResponse.class);
 
             return mapToDomainObject(Objects.requireNonNull(response.getBody()));
-        } catch (RestClientResponseException e) {
+        } catch (RestClientException e) {
             return Optional.empty();
         }
     }
