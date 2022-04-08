@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
 
@@ -20,7 +19,6 @@ public class GithubUser {
     private final LocalDateTime createdAt;
     private final String name;
     private final Double calculations;
-
 
     public static GithubUser of(Integer id, String login, String type,
                                 String avatarUrl, LocalDateTime createdAt, String name,
