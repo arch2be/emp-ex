@@ -4,6 +4,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
@@ -27,6 +30,8 @@ public class GithubUser {
     }
 
     private static Double calculateCalculation(Integer amountOfFollowers, Integer amountOfPublicRepos) {
-        return (double) 6 / amountOfFollowers * (2 + amountOfPublicRepos);
+        return BigDecimal.valueOf(6.0 / amountOfFollowers * (2.0 + amountOfPublicRepos))
+                .setScale(4, RoundingMode.HALF_UP)
+                .doubleValue();
     }
 }
