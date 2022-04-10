@@ -5,7 +5,6 @@ import io.github.arch2be.empex.domain.GithubUser;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
@@ -31,9 +30,13 @@ class LoadGithubUserImpl implements LoadGithubUser {
                     restTemplate.getForEntity(URI.create(githubURL + login), GithubUserInfoResponse.class);
 
             return mapToDomainObject(Objects.requireNonNull(response.getBody()));
-        } catch (RestClientException e) {
-            return Optional.empty();
+        } catch (GithubConnectionServerException e) {
+
+        } catch (GithubUserNotFoundException e) {
+
         }
+
+        return Optional.empty();
     }
 
     private Optional<GithubUser> mapToDomainObject(GithubUserInfoResponse response) {

@@ -23,7 +23,7 @@ class GetFailureGithubUserInfoIntegrationTest extends Specification {
     @SpringBean
     RestTemplate restTemplate = Mock() {
         getForEntity(_, GithubUserInfoResponse.class) >> {
-            throw new RestClientException(GithubUserResponseFixtures.NOT_FOUND_MSG_FROM_GITHUB)
+            throw new GithubUserNotFoundException(GithubUserResponseFixtures.NOT_FOUND_MSG_FROM_GITHUB)
         }
     }
 
