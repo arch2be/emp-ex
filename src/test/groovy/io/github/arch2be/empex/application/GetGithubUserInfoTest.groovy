@@ -6,7 +6,7 @@ import io.github.arch2be.empex.application.ports.out.LoadGithubUser
 import io.github.arch2be.empex.fixtures.GithubUserFixtures
 import spock.lang.Specification
 
-class GetGithubUserInfo extends Specification {
+class GetGithubUserInfoTest extends Specification {
 
     LoadGithubUser loadGithubUser = Stub(LoadGithubUser)
     GetGithubUserInfoService getGithubUserInfoService = new GetGithubUserInfoService(loadGithubUser)

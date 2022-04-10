@@ -7,7 +7,7 @@ import io.github.arch2be.empex.domain.GithubUserAuditLog
 import io.github.arch2be.empex.fixtures.GithubUserAuditLogFixtures
 import spock.lang.Specification
 
-class LogGetGithubUserInfoRequest extends Specification {
+class LogGetGithubUserInfoRequestTest extends Specification {
 
     GithubUserAuditLogRepository repository
     LogGetGithubUserInfoRequestUseCase logGetGithubUserInfoRequestUseCase
